@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   scope module: :public do
     root to:'homes#top' #トップページ
       #イベントの一覧、詳細、登録(画面、処理)、編集
