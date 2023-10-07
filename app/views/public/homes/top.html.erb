@@ -1,13 +1,13 @@
 <h1>イベント情報</h1>
   <h2>イベント検索</h2>
-    <%= link_to events_path, method: :post, class:"btn btn-primary" 'nav-link text-light' do %>
+    <%= link_to events_path, method: :post, class:"btn btn-primary text-light" do %>
       新しくイベントを登録する
     <% end %>
 
-  <p>イベント名</p>
+  イベント名
 <%= form_with model: @events, url: events_path do |f| %>
  <%= f.text_field :name  %>
- <%= f.submit 'イベントを検索'%>
+ <%= f.submit 'イベントを検索', class:"btn btn-success"%>
 <% end %>
 
-<h2>今日の開催イベント一覧</h2>
+<h2>今日の開催イベント一覧(<%= Event.count %>件)</h2>
