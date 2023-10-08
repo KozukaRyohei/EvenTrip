@@ -10,10 +10,13 @@ class Public::EventsController < ApplicationController
   def new
     @event = Event.new
   end
+  
   def create
     @event = Event.new(event_params)
     if @event.save
+      redirect_to event_path(params[:id])
     else
+      render new_event_path
     end
   end
 
