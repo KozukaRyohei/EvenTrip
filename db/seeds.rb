@@ -10,7 +10,6 @@
    name: '桑原由気と本渡楓のパリパリパーリィ☆ 6th Anniversary Greeting Parry',
    hold_date: '2022-12-30',
    hold_place: '科学技術館サイエンスホール'
-   event_image:
 )
   Event.create!(
    name: '『ゆうか・ゆうきのAll Around search』番組公開収録イベント',
