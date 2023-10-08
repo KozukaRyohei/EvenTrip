@@ -1,0 +1,10 @@
+<% if @events.any? %>
+  <h2>イベント一覧</h2>
+  <ul>
+    <% @events.each do |event| %>
+      <li><%= link_to event.name, event_path(event) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>該当するイベントはありません。</p>
+<% end %>
