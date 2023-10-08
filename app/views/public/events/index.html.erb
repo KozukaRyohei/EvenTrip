@@ -3,6 +3,8 @@
   <ul>
     <% @events.each do |event| %>
       <li><%= link_to event.name, event_path(event) %></li>
+      <div><%= event.hold_year %>年<%= event.hold_month %>月<%= event.hold_day %>日</div>
+      <div>開催場所:<%= event.hold_place %></div>
     <% end %>
   </ul>
 <% else %>

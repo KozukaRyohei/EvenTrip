@@ -54,9 +54,7 @@ ActiveRecord::Schema.define(version: 2023_10_07_104600) do
 
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
-    t.string "hold_year", null: false
-    t.string "hold_month", null: false
-    t.string "hold_day", null: false
+    t.date "hold_date", null: false
     t.string "hold_place", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
