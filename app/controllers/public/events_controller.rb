@@ -10,16 +10,19 @@ class Public::EventsController < ApplicationController
   def new
     @event = Event.new
   end
+  
   def create
     @event = Event.new(event_params)
     if @event.save
+      redirect_to event_path(params[:id])
     else
+      render new_event_path
     end
   end
 
   private
 
   def event_params
-      params.require(:events).permit(:name, :hold_year, :hold_month, :hold_day, :hold_place)
+      params.require(:event).permit(:name, :hold_date, :hold_place, :event_image)
   end
 end

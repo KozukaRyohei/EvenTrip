@@ -10,6 +10,7 @@
    name: '桑原由気と本渡楓のパリパリパーリィ☆ 6th Anniversary Greeting Parry',
    hold_date: '2022-12-30',
    hold_place: '科学技術館サイエンスホール'
+   event_image:
 )
   Event.create!(
    name: '『ゆうか・ゆうきのAll Around search』番組公開収録イベント',
@@ -20,9 +21,4 @@
    name: '桑原由気 Fan Fun Festa 2023',
    hold_date: '2023-05-21',
    hold_place: 'シダックスカルチャーホールA (SHIDAX CULTURE HALL)'
-)
-Event.create!(
-   name: 'test',
-   hold_date: '2023-10-08',
-   hold_place: 'test会場'
 )

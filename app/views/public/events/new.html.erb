@@ -6,7 +6,8 @@
     <%= f.date_field :hold_date %>
   <h2>開催場所</h2>
     <%= f.text_field :hold_place %>
-  <h2>ハッシュタグ</h2>
-  
   <h2>サムネイル画像</h2>
+    <%= f.file_field :event_image %>
+    
+  <%= f.submit "登録する", class: 'btn btn-primary col-xs-12' %>
 <% end %>
