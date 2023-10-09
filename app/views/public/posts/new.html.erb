@@ -1,0 +1,9 @@
+<h1>投稿ページ</h1>
+<%= form_with(model: Post.new, url: event_posts_path,method: :post, local: true) do |f| %>
+  <h2>投稿文</h2>
+    <%= f.text_field :text %>
+  <h2>投稿画像</h2>
+    <%= f.file_field :post_image,multiple: true %>
+
+  <%= f.submit "登録する", class: 'btn btn-primary col-xs-12' %>
+<% end %>
