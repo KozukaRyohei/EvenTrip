@@ -7,16 +7,20 @@ class Public::EventsController < ApplicationController
     end
   end
 
+  def show
+    @event = Event.find(params[:id])
+  end
+
   def new
     @event = Event.new
   end
-  
+
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to event_path(params[:id])
+      # redirect_to event_path(params[:id])
     else
-      render new_event_path
+      # render new_event_path
     end
   end
 
