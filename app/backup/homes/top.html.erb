@@ -1,0 +1,18 @@
+<h1>イベント情報</h1>
+  <h2>イベント検索</h2>
+    <%= link_to new_event_path, method: :get, class:"btn btn-primary text-light" do %>
+      新しくイベントを登録する
+    <% end %>
+
+  <%= form_tag(events_path, method: :get) do %>
+    <%= label_tag :search, 'イベントを検索:' %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag '検索' %>
+  <% end %>
+
+<h2>今日の開催イベント一覧(<%= @today_events.count %>件)</h2>
+<% @today_events.each do |event| %>
+  <%= event.name %>
+  <%= event.hold_date %>
+  <%= event.hold_place %>
+<% end %>
