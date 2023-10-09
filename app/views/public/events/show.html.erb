@@ -1,0 +1,13 @@
+<h1>イベント詳細</h1>
+  <h2>イベント名</h2>
+    <%= @event.name%>
+  <h2>開催日時</h2>
+    <%= @event.hold_date %>
+  <h2>開催場所</h2>
+    <%= @event.hold_place %>
+  <h2>サムネイル画像</h2>
+    <%= image_tag @event.get_event_image(200,200) %>
+    
+  <%= link_to new_event_path, method: :get, class:"btn btn-primary text-light" do %>
+      このイベントの記録を行う
+  <% end %>
