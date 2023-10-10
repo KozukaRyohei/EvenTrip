@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       #新規登録(画面、処理)、マイページ、登録情報編集(画面、処理)、ユーザーの退会処理
     resources :users, only: [:new, :create, :show, :edit, :update,:destroy] do
       member do
-        get :favorites
+        get :favorited_posts
       end
     end
     # ログイン画面、ログイン処理、ログアウト処理

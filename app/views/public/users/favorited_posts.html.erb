@@ -1,3 +1,9 @@
-:
-<li><%= link_to liked_posts_user_path(current_user), data: { "turbolinks" => false } do %><i class="fas fa-thumbs-up"></i>いいねした投稿<% end %></li>
-:
+
+
+  <h4>いいねした投稿</h4>
+  <% @favorited_posts.each do |posts| %>
+    <%= link_to event_post_path(posts.event_id,posts.id) do %>
+      <div><%= image_tag posts.post_images[0].variant(resize:'500x500') %></div>
+    <% end %>
+      <div><%= posts.text %></div>
+  <% end %>

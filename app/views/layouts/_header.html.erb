@@ -23,6 +23,11 @@
               ログアウト
             <% end %>
           </li>
+          <li>
+            <%= link_to favorited_posts_user_path(current_user),class: 'nav-link text-light', data: { "turbolinks" => false } do %>
+              いいねした投稿
+            <% end %>
+          </li>
         <% else %>
           <li>
             <%= link_to events_path,class: 'nav-link text-light' do %>
