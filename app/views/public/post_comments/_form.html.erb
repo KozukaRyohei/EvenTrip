@@ -1,0 +1,4 @@
+<%= form_with(model: comment, url: event_post_post_comments_path(post.event_id,post.id), method: :post, local: true) do |f| %>
+    <%= f.text_area :comment, placeholder: "コメントをここに", class: "w-50" %>
+    <%= f.submit "送信" %>
+<% end %>

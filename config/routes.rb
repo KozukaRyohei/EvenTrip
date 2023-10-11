@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :events, only: [:index, :show, :new, :create, :edit] do
       #投稿の一覧、投稿(画面、処理)、詳細、投稿の削除
       resources :posts, only: [:index, :new, :create, :show, :destroy] do
+        resources :post_comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
         resources :comments, only: [:create, :destroy]
       end
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
       #新規登録(画面、処理)、マイページ、登録情報編集(画面、処理)、ユーザーの退会処理
     resources :users, only: [:new, :create, :show, :edit, :update,:destroy] do
       member do
-        get :favorites
+        get :favorited_posts
       end
     end
     # ログイン画面、ログイン処理、ログアウト処理
