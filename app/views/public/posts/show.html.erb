@@ -11,4 +11,11 @@
   <td>コメント数： <%= @post.post_comments.count %></td>
   <%= render "public/post_comments/index", post: @post %>
   <%= render "public/post_comments/form", post: @post,comment: @comment %>
-  <!--<= render "public/post_comments/form" %>-->
+
+  <%= @post.text %>
+  <% @post.hashtags.each do |hashtag| %>
+    <%= link_to "##{hashtag.name}", event_post_hashtag_path(event_id: @post.event_id, post_id: @post.id, name: hashtag.name) %>
+  <% end %>
+  <%# @tags.each do |tag| %>
+    <%# link_hashtag(tag) %>
+  <%# end %>

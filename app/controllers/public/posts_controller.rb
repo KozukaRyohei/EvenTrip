@@ -10,16 +10,18 @@ class Public::PostsController < ApplicationController
     @post.event_id = params[:event_id]
     if @post.save
       redirect_to event_post_path(@post.event_id, @post)
-    else
     end
+
   end
 
   def show
     @post = Post.find(params[:id])
     @comment = PostComment.new
+    @tags = @post.hashtags
   end
 
   private
+
 
   def post_params
     params.require(:post).permit(:text, post_images: [])
