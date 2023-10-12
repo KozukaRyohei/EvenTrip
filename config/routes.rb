@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :events, only: [:index, :show, :new, :create, :edit] do
       #投稿の一覧、投稿(画面、処理)、詳細、投稿の削除
       resources :posts, only: [:index, :new, :create, :show, :destroy] do
+        resources :hashtags, only: [:show],param: :name
         resources :post_comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
         resources :comments, only: [:create, :destroy]
