@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Admin.create!(
+   email: 'test@test.com',
+   password: '123456'
+)
+
   Event.create!(
    name: '桑原由気と本渡楓のパリパリパーリィ☆ 6th Anniversary Greeting Parry',
    hold_date: '2022-12-30',

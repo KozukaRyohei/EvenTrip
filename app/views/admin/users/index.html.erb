@@ -1,0 +1,23 @@
+<h1>会員一覧（管理者向け）</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ユーザー名</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td>
+          <%= form_for user, url: admin_user_path(user), method: :patch do |f| %>
+            <%= f.select :status, User.statuses.keys %>
+            <%= f.submit '更新' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
