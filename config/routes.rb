@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
 
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+      sessions: 'admin/sessions'
+    }
+
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
     }
 
-    devise_for :admin, skip: [:registrations, :passwords] , controllers: {
-      sessions: 'admin/sessions',
-      users: 'admin/users'
-    }
+  namespace :admin do
+    resources :users, only: [:index, :show, :update]
+  end
 
   scope module: :public do
-    root to:'homes#top' #トップページ
+     root to:'homes#top' #トップページ
       #イベントの一覧、詳細、登録(画面、処理)、編集
     resources :events, only: [:index, :show, :new, :create, :edit] do
       #投稿の一覧、投稿(画面、処理)、詳細、投稿の削除
@@ -29,6 +32,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
-
 end

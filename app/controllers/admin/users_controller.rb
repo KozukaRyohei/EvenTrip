@@ -1,6 +1,5 @@
 class Admin::UsersController < ApplicationController
-  
-  before_action :authenticate_admin # 管理者認証のためのフィルター
+
 
     def index
       @users = User.all
@@ -18,15 +17,6 @@ class Admin::UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit(:status)
+      params.require(:user).permit(:is_deleted)
     end
-    
-    def authenticate_admin
-      unless current_user && current_user.admin?
-        # 管理者でないユーザーの場合、適切なリダイレクトやエラーハンドリングを行う
-        flash[:alert] = "管理者権限が必要です。"
-        redirect_to root_path
-      end
-    end
-    
   end
