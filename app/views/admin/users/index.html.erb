@@ -10,10 +10,10 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.username %></td>
+        <td><%= user.name %></td>
         <td>
-          <%= form_for user, url: admin_user_path(user), method: :patch do |f| %>
-            <%= f.select :status, User.statuses.keys %>
+          <%= form_with model: user, url: admin_user_path(user.id) do |f| %>
+            <%= f.select :is_deleted, options_for_select({ "退会" => true, "有効" => false }, f.object.is_deleted) %>
             <%= f.submit '更新' %>
           <% end %>
         </td>
