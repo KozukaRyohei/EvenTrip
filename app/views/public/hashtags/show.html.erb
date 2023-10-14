@@ -1,0 +1,7 @@
+<h1>ハッシュタグ: #<%= @hash_tag.name %></h1>
+
+<% @posts.each do |post| %>
+  <div class="post">
+    <%= post.text %>
+  </div>
+<% end %>

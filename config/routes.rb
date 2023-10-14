@@ -1,0 +1,34 @@
+Rails.application.routes.draw do
+
+  devise_for :users,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+    }
+
+    devise_for :admin, skip: [:registrations, :passwords] , controllers: {
+      sessions: 'admin/sessions',
+      users: 'admin/users'
+    }
+
+  scope module: :public do
+    root to:'homes#top' #トップページ
+      #イベントの一覧、詳細、登録(画面、処理)、編集
+    resources :events, only: [:index, :show, :new, :create, :edit] do
+      #投稿の一覧、投稿(画面、処理)、詳細、投稿の削除
+      resources :posts, only: [:index, :new, :create, :show, :destroy] do
+        resources :hashtags, only: [:show],param: :name
+        resources :post_comments, only: [:create, :destroy]
+        resource :favorites, only: [:create, :destroy]
+        resources :comments, only: [:create, :destroy]
+      end
+    end
+      #新規登録(画面、処理)、マイページ、登録情報編集(画面、処理)、ユーザーの退会処理
+    resources :users, only: [:new, :create, :show, :edit, :update,:destroy] do
+      member do
+        get :favorited_posts
+      end
+    end
+  end
+
+
+end

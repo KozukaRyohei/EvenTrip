@@ -1,24 +1,31 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# EvenTrip
+## サイト概要
+### サイトテーマ
+行ったイベントに対しての写真をまとめて投稿、閲覧できるコミュニティサイト
+​
+### テーマを選んだ理由
+自分は県外にイベントに行くことが多く、行った日の写真をSNSに投稿して<br>
+記録としてまとめるのが好きなのですが、<br>
+自分が使用している既存のSNSだと、1投稿に対して数枚の写真しか投稿できず<br>
+昔行ったイベントを振り返ろうと思ったときに断片的にしか振り返れず、<br>
+振り返るときに見直しづらいと思っていました。<br>
+なので、1イベントに対して複数枚の写真を投稿できれば<br>
+まとめて振り返ることができ、思い出として振り返りやすくなると思い<br>
+このサイトの開発に着手しようと考えました。
+​
+### ターゲットユーザ
+* 旅行、イベントなどを記録として残したい人
+​
+### 主な利用シーン
+* 行った旅行、イベントを記録として残す時
+* 他の人が投稿した写真を閲覧する時
+## 設計書
+<!--テーマを設定・提出する時点では不要です-->
+​
+## 開発環境
+- OS：Windows10
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
