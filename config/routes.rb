@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
-  }
+    }
 
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
-  }
+    devise_for :admin, skip: [:registrations, :passwords] , controllers: {
+      sessions: 'admin/sessions',
+      users: 'admin/users'
+    }
 
   scope module: :public do
     root to:'homes#top' #トップページ
@@ -27,16 +28,7 @@ Rails.application.routes.draw do
         get :favorited_posts
       end
     end
-    # ログイン画面、ログイン処理、ログアウト処理
-    resources :sessions, only: [:new, :create, :destroy]
   end
 
-    namespace :admin do
-      root to: 'homes#top'
-      resources :sessions, only: [:new, :create, :destroy]
-      resources :users, only: [:index, :show, :update]
-      resources :comments, only: [:index, :destroy] do
-        get :search, on: :collection
-      end
-    end
+
 end
