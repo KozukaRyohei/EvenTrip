@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
      root to:'homes#top' #トップページ
+     post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
       #イベントの一覧、詳細、登録(画面、処理)、編集
     resources :events, only: [:index, :show, :new, :create, :edit] do
       #投稿の一覧、投稿(画面、処理)、詳細、投稿の削除
