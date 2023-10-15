@@ -1,0 +1,25 @@
+<%= form_with url: admin_post_comments_path, method: :get do |form| %>
+  <%= form.text_field :search, placeholder: "コメントを検索" %>
+  <%= form.submit "検索" %>
+<% end %>
+
+<h1>コメント一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>コメント</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.user_id %></td>
+        <td><%= comment.comment %></td>
+        <td>
+          <%= link_to "Destroy", admin_post_comment_path(comment.id), method: :delete, class: "btn btn-sm btn-danger float-end" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

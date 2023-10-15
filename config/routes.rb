@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     }
 
   namespace :admin do
+    resources :post_comments, only:[:index, :destroy]
     resources :users, only: [:index, :show, :update]
   end
 
