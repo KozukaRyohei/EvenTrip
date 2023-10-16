@@ -12,7 +12,7 @@
 
 <h2>今日の開催イベント一覧(<%= @today_events.count %>件)</h2>
 <% @today_events.each do |event| %>
-  <%= event.name %>
-  <%= event.hold_date %>
-  <%= event.hold_place %>
+  <div><%= event.name %></div>
+  <div><%= event.hold_date %></div>
+  <div><%= event.hold_place %></div>
 <% end %>

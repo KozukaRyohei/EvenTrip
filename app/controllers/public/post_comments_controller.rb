@@ -5,7 +5,7 @@ class Public::PostCommentsController < ApplicationController
    comment = current_user.post_comments.new(post_comment_params)
    comment.post_id = post.id
    comment.save
-  redirect_to request.referer
+   redirect_to request.referer
   end
 
   def destroy
@@ -19,4 +19,4 @@ class Public::PostCommentsController < ApplicationController
     def post_comment_params
       params.require(:post_comment).permit(:comment)
     end
-  end
+end
