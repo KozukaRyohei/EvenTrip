@@ -1,3 +1,13 @@
+<% if comment.errors.any? %>
+  <%= comment.errors.count %>件のエラーが発生しました
+  <ul>
+    <% comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
 <%= form_with(model: comment, url: event_post_post_comments_path(post.event_id,post.id), method: :post, local: true) do |f| %>
     <%= f.text_area :comment, placeholder: "コメントをここに", class: "w-50" %>
     <%= f.submit "送信" %>

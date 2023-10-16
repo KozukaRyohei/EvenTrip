@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  
+
   before_save :extract_and_save_hashtags
 
   belongs_to :user
@@ -7,6 +7,10 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :hash_post_relations
   has_many :hashtags, through: :hash_post_relations
+
+  validates :text, presence: true
+  validates :post_images, presence: true
+
   has_many_attached :post_images
 
   def extract_and_save_hashtags

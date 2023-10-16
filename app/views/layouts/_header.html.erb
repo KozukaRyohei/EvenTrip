@@ -10,7 +10,7 @@
 
         <% if user_signed_in? %>
            <li><%= link_to 'イベント一覧', events_path,class: 'nav-link text-light'  %> </li>
-           <li><%=  link_to 'マイページ', user_path(current_user),class: 'nav-link text-light' %> </li>
+           <li><%= link_to 'マイページ', user_path(current_user),class: 'nav-link text-light' %> </li>
            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'nav-link text-light' %> </li>
            <li><%= link_to 'いいねした投稿', favorited_posts_user_path(current_user),class: 'nav-link text-light'%></li>
         <% elsif admin_signed_in? %>

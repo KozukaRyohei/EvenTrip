@@ -9,7 +9,11 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.event_id = params[:event_id]
     if @post.save
+      # flash[notice] = "投稿に成功しました。"
       redirect_to event_post_path(@post.event_id, @post)
+    else
+      flash.now[:alert] = "投稿に失敗しました。"
+      render :new
     end
 
   end
