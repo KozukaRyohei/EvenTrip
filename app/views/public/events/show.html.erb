@@ -11,3 +11,11 @@
   <%= link_to new_event_post_path(@event.id), method: :get, class:"btn btn-primary text-light" do %>
       このイベントの記録を行う
   <% end %>
+
+  <% @posts.each do |post| %>
+    <div><%= post.text %></div>
+    <% first_image = post.post_images.first %><!--最初に選択した写真を選択-->
+    <%= link_to event_post_path(event_id: post.event_id, id: post.id),class: 'nav-link text-light' do%>
+      <div><%= image_tag first_image.variant(resize: '100x100') %></div>
+    <% end %>
+  <% end %>

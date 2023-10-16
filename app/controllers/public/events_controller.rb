@@ -9,6 +9,7 @@ class Public::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @posts = Post.where(event_id: @event.id)
   end
 
   def new
@@ -17,10 +18,13 @@ class Public::EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+
     if @event.save
-      # redirect_to event_path(params[:id])
+      flash[notice] = "イベントを登録しました。"
+       redirect_to event_path(id: @event.id)
     else
-      # render new_event_path
+       flash.now[:alert] = "登録に失敗しました。"
+       render :new
     end
   end
 
