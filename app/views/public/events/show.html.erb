@@ -8,9 +8,12 @@
   <h2>サムネイル画像</h2>
     <%= image_tag @event.get_event_image(200,200) %>
 
-  <%= link_to new_event_post_path(@event.id), method: :get, class:"btn btn-primary text-light" do %>
-      このイベントの記録を行う
+  <% if user_signed_in? %>
+    <%= link_to new_event_post_path(@event.id), method: :get, class:"btn btn-primary text-light" do %>
+        このイベントの記録を行う
+    <% end %>
   <% end %>
+
 
   <% @posts.each do |post| %>
     <div><%= post.text %></div>
