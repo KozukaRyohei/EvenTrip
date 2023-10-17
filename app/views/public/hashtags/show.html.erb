@@ -1,7 +1,26 @@
-<h1>ハッシュタグ: #<%= @hash_tag.name %></h1>
+<h1>#<%= @hash_tag.name %>  投稿一覧</h1>
 
 <% @posts.each do |post| %>
   <div class="post">
-    <%= post.text %>
+    <!--ハッシュタグ部分以外の投稿内容を表示-->
+    <% text = post.text.gsub(/(?<=\s|^)#\S+/,'').strip %><!--テキストにハッシュタグ以外の文を格納-->
+    <% unless text.empty? %><!--テキストが空(ハッシュタグのみの投稿なら投稿文の項目を表示しない)-->
+      <div>投稿文:<%= post.text.gsub(/(?<=\s|^)#\S+/,'') %></div>
+    <% end %>
+    <!--投稿に紐づいたすべてのハッシュタグ表示-->
+    <div>ハッシュタグ:
+      <% post.hashtags.each do |hashtag| %>
+        <%= link_to "##{hashtag.name}", event_post_hashtag_path(event_id: post.event_id, post_id: post.id, name: hashtag.name) %>
+      <% end %>
+    </div>
+    <!--ユーザー名-->
+    <div>投稿ユーザー: <%= link_to "#{post.user.name}", user_path(id: post.user_id) %></div>
+    <!--サムネイル画像-->
+    <div>
+      <% first_image = post.post_images.first %><!--最初に選択した写真を選択-->
+      <%= link_to event_post_path(event_id: post.event_id, id: post.id),class: 'nav-link text-light' do%>
+        <div><%= image_tag first_image.variant(resize: '100x100') %></div>
+      <% end %>
+    </div>
   </div>
 <% end %>

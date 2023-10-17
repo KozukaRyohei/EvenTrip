@@ -24,8 +24,9 @@ class Public::PostsController < ApplicationController
     @tags = @post.hashtags
   end
 
-  private
 
+
+  private
 
   def post_params
     params.require(:post).permit(:text, post_images: [])
