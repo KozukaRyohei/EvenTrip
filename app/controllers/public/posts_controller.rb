@@ -23,6 +23,13 @@ class Public::PostsController < ApplicationController
     @comment = PostComment.new
     @tags = @post.hashtags
   end
+  
+  def correct_post
+        @post = Post.find(params[:id])
+    unless @post.user.id == current_user.id
+      redirect_to posts_path
+    end
+  end
 
   private
 
