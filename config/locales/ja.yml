@@ -2,11 +2,15 @@ ja:
   activerecord:
     models:
       event: ユーザー
+      post: 投稿
     attributes:
       event:
         name: イベント名
         hold_date: イベント開催日時
         hold_place: イベント開催場所
+      post:
+        text: 投稿文
+        post_images: 投稿画像
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

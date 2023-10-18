@@ -1,11 +1,4 @@
-<% if @post.errors.any? %>
-  <%= @post.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'layouts/errors', obj: @post %>
 
 <h1>投稿ページ</h1>
 <%= form_with(model: Post.new, url: event_posts_path,method: :post, local: true) do |f| %>

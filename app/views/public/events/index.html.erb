@@ -1,11 +1,28 @@
 <% if @events.any? %>
-  <h2>イベント一覧</h2>
-  <ul>
+  <h1>イベント一覧</h1>
+  <ul class="list-group">
     <% @events.each do |event| %>
-      <li><%= link_to event.name, event_path(event) %></li>
-      <div><%= event.hold_date %></div>
-      <div>開催場所:<%= event.hold_place %></div>
-      <div><%= image_tag event.get_event_image(200,200) %></div>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2><strong><%= link_to event.name, event_path(event) %></strong></h2> <!-- イベント名を大きく太字に -->
+          <span class="badge badge-primary"><%= event.hold_date %></span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>開催場所: <%= event.hold_place %></h2>
+          <!--イベントに紐づいた投稿の画像をランダム表示-->
+          <div>
+            <% if event.posts.any? %>
+              <% random_post = event.posts.sample %>
+              <% random_post.post_images.each do |image| %>
+                <%= image_tag image.variant(resize: "150x150"), class: "img-thumbnail" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <%= image_tag event.get_event_image(200, 200), class: "img-thumbnail" %>
+        </div>
+      </li>
     <% end %>
   </ul>
 <% else %>
