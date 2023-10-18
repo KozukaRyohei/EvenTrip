@@ -1,12 +1,4 @@
-<% if @event.errors.any? %>
-  <%= @event.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @event.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
+ <%= render 'layouts/errors', obj: @event %>
 
 <h1>イベント詳細</h1>
 <%= form_with model: @event do |f| %>

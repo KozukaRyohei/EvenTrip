@@ -1,10 +1,10 @@
 ja:
-  enums:
-    order:
-      payment_method:
-        credit_card: "クレジットカード"
-        transfer: "銀行振込"
   activerecord:
+    attributes:
+      user:
+        name: 名前
+        phone_number: 電話番号
+        email: メールアドレス
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -185,3 +185,5 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+
