@@ -1,35 +1,56 @@
-<h1>イベント詳細</h1>
+<h1 class="mb-4">イベント詳細</h1>
+
+<div class="mb-4">
   <h2>イベント名</h2>
-    <%= @event.name%>
+  <p><%= @event.name %></p>
+</div>
+
+<div class="mb-4">
   <h2>開催日時</h2>
-    <%= @event.hold_date %>
+  <p><%= @event.hold_date %></p>
+</div>
+
+<div class="mb-4">
   <h2>開催場所</h2>
-    <%= @event.hold_place %>
+  <p><%= @event.hold_place %></p>
+</div>
+
+<div class="mb-4">
   <h2>サムネイル画像</h2>
-    <%= image_tag @event.get_event_image(200,200) %>
+  <%= image_tag @event.get_event_image(200, 200), class: "img-thumbnail" %>
+</div>
 
-  <%= link_to 'このイベントの記録を行う', new_event_post_path(@event.id), method: :get, class:"btn btn-primary text-light"  %>
+<div class="mb-4">
+  <%= link_to 'このイベントの記録を行う', new_event_post_path(@event.id), method: :get, class: "btn btn-primary text-light" %>
+</div>
 
-  <% @posts.each do |post| %>
-    <!--投稿文の表示-->
-    <!--ハッシュタグ部分以外の投稿内容を表示-->
-    <% text = post.text.gsub(/(?<=\s|^)#\S+/,'').strip %><!--テキストにハッシュタグ以外の文を格納-->
-    <% unless text.empty? %><!--テキストが空(ハッシュタグのみの投稿なら投稿文の項目を表示しない)-->
-      <div>投稿文:<%= post.text.gsub(/(?<=\s|^)#\S+/,'') %></div>
-    <% end %>
-    <!--投稿に紐づいたすべてのハッシュタグ表示-->
-    <div>ハッシュタグ:
-      <% post.hashtags.each do |hashtag| %>
-        <%= link_to "##{hashtag.name}", event_post_hashtag_path(event_id: post.event_id, post_id: post.id, name: hashtag.name) %>
+<% @posts.each do |post| %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <!-- 投稿文の表示 -->
+      <!-- ハッシュタグ部分以外の投稿内容を表示 -->
+      <% text = post.text.gsub(/(?<=\s|^)#\S+/, '').strip %><!-- テキストにハッシュタグ以外の文を格納 -->
+      <% unless text.empty? %><!-- テキストが空(ハッシュタグのみの投稿なら投稿文の項目を表示しない) -->
+        <div class="mb-3">投稿文: <%= post.text.gsub(/(?<=\s|^)#\S+/, '') %></div>
       <% end %>
+
+      <!-- 投稿に紐づいたすべてのハッシュタグ表示 -->
+      <div class="mb-3">ハッシュタグ:
+        <% post.hashtags.each do |hashtag| %>
+          <%= link_to "##{hashtag.name}", event_post_hashtag_path(event_id: post.event_id, post_id: post.id, name: hashtag.name) %>
+        <% end %>
+      </div>
+
+      <!-- ユーザー名 -->
+      <div class="mb-3">投稿ユーザー: <%= link_to post.user.name, user_path(id: post.user_id) %></div>
+
+      <!-- サムネイル画像 -->
+      <div class="mb-3">
+        <% first_image = post.post_images.first %><!-- 最初に選択した写真を選択 -->
+        <%= link_to event_post_path(event_id: post.event_id, id: post.id), class: 'nav-link text-light' do %>
+          <%= image_tag first_image.variant(resize: '200x200') %>
+        <% end %>
+      </div>
     </div>
-    <!--ユーザー名-->
-    <div>投稿ユーザー: <%= link_to "#{post.user.name}", user_path(id: post.user_id) %></div>
-    <!--サムネイル画像-->
-    <div>
-      <% first_image = post.post_images.first %><!--最初に選択した写真を選択-->
-      <%= link_to event_post_path(event_id: post.event_id, id: post.id),class: 'nav-link text-light' do%>
-        <div><%= image_tag first_image.variant(resize: '100x100') %></div>
-      <% end %>
-    </div>
-  <% end %>
+  </div>
+<% end %>
