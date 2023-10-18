@@ -1,10 +1,12 @@
 ja:
   activerecord:
+    models:
+      event: ユーザー
     attributes:
-      user:
-        name: 名前
-        phone_number: 電話番号
-        email: メールアドレス
+      event:
+        name: イベント名
+        hold_date: イベント開催日時
+        hold_place: イベント開催場所
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
