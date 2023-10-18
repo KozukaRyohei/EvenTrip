@@ -1,23 +1,23 @@
-<% if @event.errors.any? %>
-  <%= @event.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @event.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <% if @event.errors.any? %>
+    <%= @event.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
 
-<h1>イベント詳細</h1>
-<%= form_with model: @event do |f| %>
-  <h2>イベント名</h2>
-    <%= f.text_field :name %>
-  <h2>開催日時</h2>
-    <%= f.date_field :hold_date %>
-  <h2>開催場所</h2>
-    <%= f.text_field :hold_place %>
-  <h2>サムネイル画像</h2>
-    <%= f.file_field :event_image %>
+  <h1>イベント詳細</h1>
+  <%= form_with model: @event do |f| %>
+    <h2>イベント名</h2>
+      <%= f.text_field :name %>
+    <h2>開催日時</h2>
+      <%= f.date_field :hold_date %>
+    <h2>開催場所</h2>
+      <%= f.text_field :hold_place %>
+    <h2>サムネイル画像</h2>
+      <%= f.file_field :event_image %>
 
-  <%= f.submit "登録する", class: 'btn btn-primary col-xs-12' %>
-<% end %>
+    <%= f.submit "登録する", class: 'btn btn-primary col-xs-12' %>
+  <% end %>
