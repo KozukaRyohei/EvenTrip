@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+ <%= render 'layouts/errors', obj: @event %>
+=======
   <% if @event.errors.any? %>
     <%= @event.errors.count %>件のエラーが発生しました
     <ul>
@@ -7,6 +10,7 @@
     </ul>
   <% end %>
 
+>>>>>>> origin/develop
 
   <h1>イベント詳細</h1>
   <%= form_with model: @event do |f| %>
