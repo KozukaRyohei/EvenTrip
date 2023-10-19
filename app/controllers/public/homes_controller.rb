@@ -6,9 +6,9 @@ class Public::HomesController < ApplicationController
     @date = Date.today
     @today_events = Event.where(hold_date: @date)
   end
-  
+
   def guest_sign_in
-    user = User.find_or_create_by!(email: 'guest@example.com') do |user|
+    user = User.find_or_create_by!(name: 'ゲストユーザー',email: 'guest@example.com',phone_number:'00000000000') do |user|
       user.password = SecureRandom.urlsafe_base64
     end
     sign_in user

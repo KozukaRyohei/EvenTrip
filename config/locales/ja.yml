@@ -1,8 +1,9 @@
 ja:
   activerecord:
     models:
-      event: ユーザー
+      event: イベント
       post: 投稿
+      user: ユーザー
     attributes:
       event:
         name: イベント名
@@ -11,6 +12,9 @@ ja:
       post:
         text: 投稿文
         post_images: 投稿画像
+      user:
+        name: ユーザー名
+        phone_number: 電話番号
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
