@@ -1,17 +1,20 @@
-<table>
+<table class="table table-striped">
   <tbody>
     <% post.post_comments.each do |post_comment| %>
     <tr>
       <td>
         <%= link_to user_path(post_comment.user) do %>
-          <!--<= image_tag post_comment.user.get_profile_image, size: "50x50" %><br>-->
+          <!-- Uncomment to display user profile image -->
+          <!-- <%#= image_tag post_comment.user.get_profile_image, size: "50x50" %><br> -->
           <%= post_comment.user.name %>
         <% end %>
       </td>
       <td><%= post_comment.comment %></td>
       <td>
         <% if post_comment.user == current_user %>
-          <%= link_to "Destroy", event_post_post_comment_path(post.event_id,post.id, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
+          <td>
+            <%= link_to "Destroy", event_post_post_comment_path(post.event_id, post.id, post_comment), method: :delete, class: "btn btn-sm btn-danger" %>
+          </td>
         <% end %>
       </td>
     </tr>
