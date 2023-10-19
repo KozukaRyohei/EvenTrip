@@ -27,3 +27,21 @@
     </div>
   </div>
 </div>
+
+<div class="container">
+  <h2>このイベントに関連する投稿</h2>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4">
+        <div class="mb-4">
+          <% first_image = post.post_images.first %><!--最初に選択した写真を選択-->
+          <%= link_to event_post_path(event_id: post.event_id, id: post.id),class: 'nav-link text-light' do%>
+            <div><%= image_tag first_image.variant(resize: '100x100') %></div>
+          <% end %>
+          <div>投稿ユーザー: <%= link_to "#{post.user.name}", user_path(id: post.user_id) %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
