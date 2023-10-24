@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="user-info">
+        <div>ユーザー名: <%= @user.name %></div>
+        <div>ユーザー画像</div>
+        <%= image_tag @user.user_image.variant(resize: '100x100'), class: 'img-thumbnail' %>
+        <div>参加イベント数: <%= @unique_event_count %> 件</div>
+        <div><%= link_to "ユーザー情報編集", edit_user_path(@user), class: 'btn btn-primary' %></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="user-posts">
+        <h3>投稿一覧</h3>
+        <% @posts.each do |post| %>
+          <div class="post">
+            <% first_image = post.post_images.first %>
+            <%= link_to event_post_path(event_id: post.event_id, id: post.id) do %>
+              <%= image_tag first_image.variant(resize: '100x100'), class: 'img-thumbnail' %>
+            <% end %>
+            <div><strong><%= post.event.name %></strong></div>
+            <div><%= post.event.hold_date %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

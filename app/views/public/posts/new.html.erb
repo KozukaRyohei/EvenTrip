@@ -1,11 +1,18 @@
 <%= render 'layouts/errors', obj: @post %>
 
-<h1>投稿ページ</h1>
-<%= form_with(model: Post.new, url: event_posts_path,method: :post, local: true) do |f| %>
-  <h2>投稿文</h2>
-    <%= f.text_field :text %>
-  <h2>投稿画像</h2>
-    <%= f.file_field :post_images,multiple: true %>
+<div class="container">
+  <h1>投稿ページ</h1>
+  <%= form_with(model: Post.new, url: event_posts_path, method: :post, local: true) do |f| %>
+    <div class="form-group">
+      <h2>投稿文</h2>
+      <%= f.text_field :text, class: 'form-control' %>
+    </div>
 
-  <%= f.submit "登録する", class: 'btn btn-primary col-xs-12' %>
-<% end %>
+    <div class="form-group">
+      <h2>投稿画像</h2>
+      <%= f.file_field :post_images, multiple: true, class: 'form-control-file' %>
+    </div>
+
+    <%= f.submit "登録する", class: 'btn btn-primary' %>
+  <% end %>
+</div>
