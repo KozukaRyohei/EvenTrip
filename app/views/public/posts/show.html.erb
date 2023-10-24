@@ -25,7 +25,9 @@
 <% end %>
 
 <div class="mb-3">
-  <p><%= @post.text.gsub(/(?<=\s|^)#\S+/, '') %></p>
+  <p><!---->
+    <%= simple_format(@post.text.gsub(/(?<=\s|^)#\S+/, '')) %>
+  </p>
   <p>
     <% @post.hashtags.each do |hashtag| %>
       <%= link_to "##{hashtag.name}", event_post_hashtag_path(event_id: @post.event_id, post_id: @post.id, name: hashtag.name) %>
