@@ -6,12 +6,12 @@
         <%= link_to event_post_path(post.event_id, post.id) do %>
           <div class="card">
             <%= image_tag post.post_images[0].variant(resize: '500x500'), class: 'card-img-top' %>
-            <div class="card-body">
+        <% end %>
+        <div class="card-body">
               <p class="card-text">
                 <%= post.text.gsub(/(?<=\s|^)#\S+/, '') %></p>
             </div>
           </div>
-        <% end %>
       </div>
     <% end %>
   </div>
