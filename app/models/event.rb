@@ -2,6 +2,8 @@ class Event < ApplicationRecord
 
   has_one_attached :event_image
 
+  has_many :posts
+
   validates :name, presence: true
   validates :hold_date, presence: true
   validates :hold_place, presence: true
@@ -13,4 +15,5 @@ class Event < ApplicationRecord
     end
       event_image.variant(resize_to_limit: [width, height]).processed
   end
+
 end

@@ -1,18 +1,36 @@
-
-  <% if @post.post_images.attached? %>
+<% if @post.post_images.attached? %>
+  <div class="row">
     <% @post.post_images.each do |image| %>
-        <%= image_tag image.variant(resize:'500x500') %>
+      <div class="col-md-4 mb-3">
+        <%= image_tag image, class: "img-fluid" %>
+      </div>
     <% end %>
-  <% end %>
-
-  <div id="favorite_btn_<%= @post.id %>">
-    <%= render "public/favorites/btn", post: @post %>
   </div>
-  <td>コメント数： <%= @post.post_comments.count %></td>
-  <%= render "public/post_comments/index", post: @post %>
-  <%= render "public/post_comments/form", post: @post,comment: @comment %>
+<% end %>
 
-  <%= @post.text %>
-  <% @post.hashtags.each do |hashtag| %>
-    <%= link_to "##{hashtag.name}", event_post_hashtag_path(event_id: @post.event_id, post_id: @post.id, name: hashtag.name) %>
-  <% end %>
+<% if user_signed_in? %>
+  <div class="mb-3">
+    <div id="favorite_btn_<%= @post.id %>">
+      <%= render "public/favorites/btn", post: @post %>
+    </div>
+  </div>
+<% end %>
+
+<div class="mb-3">
+  <p>コメント数：<%= @post.post_comments.count %></p>
+</div>
+<% if user_signed_in? %>
+  <%= render "public/post_comments/index", post: @post %>
+  <%= render "public/post_comments/form", post: @post, comment: @comment %>
+<% end %>
+
+<div class="mb-3">
+  <p><!---->
+    <%= simple_format(@post.text.gsub(/(?<=\s|^)#\S+/, '')) %>
+  </p>
+  <p>
+    <% @post.hashtags.each do |hashtag| %>
+      <%= link_to "##{hashtag.name}", event_post_hashtag_path(event_id: @post.event_id, post_id: @post.id, name: hashtag.name) %>
+    <% end %>
+  </p>
+</div>

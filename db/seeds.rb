@@ -10,8 +10,10 @@ Admin.create!(
    email: 'test@test.com',
    password: '123456'
 )
+
+
   Event.create!(
-   name: 'テストイベント',
-   hold_date: '2023-10-15',
-   hold_place: 'テストイベント会場'
-)
+    name: '平日深呼吸。桑原由気&高田憂希　バスツアー第二弾',
+    hold_date: '2023-10-22',
+    hold_place: '関東近郊'
+ )

@@ -1,10 +1,20 @@
 ja:
-  enums:
-    order:
-      payment_method:
-        credit_card: "クレジットカード"
-        transfer: "銀行振込"
   activerecord:
+    models:
+      event: イベント
+      post: 投稿
+      user: ユーザー
+    attributes:
+      event:
+        name: イベント名
+        hold_date: イベント開催日時
+        hold_place: イベント開催場所
+      post:
+        text: 投稿文
+        post_images: 投稿画像
+      user:
+        name: ユーザー名
+        phone_number: 電話番号
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -185,3 +195,5 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+
