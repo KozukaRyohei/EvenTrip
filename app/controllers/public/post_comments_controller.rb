@@ -4,7 +4,8 @@ class Public::PostCommentsController < ApplicationController
    post = Post.find(params[:post_id])
    comment = current_user.post_comments.new(post_comment_params)
    comment.post_id = post.id
-   if comment.present?
+
+   if comment.comment.blank?
      flash.now[:alert] = "コメントは空白では送信できません。"
      @post = Post.find(params[:post_id])
      @comment = PostComment.new
