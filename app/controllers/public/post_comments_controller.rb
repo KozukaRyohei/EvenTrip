@@ -4,8 +4,15 @@ class Public::PostCommentsController < ApplicationController
    post = Post.find(params[:post_id])
    comment = current_user.post_comments.new(post_comment_params)
    comment.post_id = post.id
-   comment.save
-   redirect_to request.referer
+   if comment.present?
+     flash.now[:alert] = "コメントは空白では送信できません。"
+     @post = Post.find(params[:post_id])
+     @comment = PostComment.new
+     @tags = @post.hashtags
+     render template: 'public/posts/show'
+   elsif comment.save
+     redirect_to request.referer
+   end
   end
 
   def destroy
