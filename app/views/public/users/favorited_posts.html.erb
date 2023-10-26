@@ -1,15 +1,16 @@
+<h4>いいねした投稿</h4>
 <div class="container">
-  <h4>いいねした投稿</h4>
   <div class="row">
     <% @favorited_posts.each do |post| %>
       <div class="col-md-4 mb-4">
         <%= link_to event_post_path(post.event_id, post.id) do %>
           <div class="card">
-            <%= image_tag post.post_images[0].variant(resize: '500x500'), class: 'card-img-top' %>
+            <%= image_tag post.post_images[0].variant(resize: '500x500').processed, class: 'card-img-top' %>
         <% end %>
         <div class="card-body">
               <p class="card-text">
-                <%= post.text.gsub(/(?<=\s|^)#\S+/, '') %></p>
+                 <%= link_to post.user.name, user_path(post.user) %>：<%= post.text.gsub(/(?<=\s|^)#\S+/, '') %>
+              </p>
             </div>
           </div>
       </div>

@@ -20,7 +20,7 @@
           <!--</div>-->
         </div>
         <div>
-          <%= image_tag event.get_event_image(200, 200), class: "img-thumbnail" %>
+          <%= image_tag event.get_event_image(200, 200).processed, class: "img-thumbnail" %>
         </div>
       </li>
     <% end %>
