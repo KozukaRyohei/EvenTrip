@@ -5,7 +5,7 @@
       <div class="col-md-4 mb-4">
         <%= link_to event_post_path(post.event_id, post.id) do %>
           <div class="card">
-            <%= image_tag post.post_images[0].variant(resize: '500x500'), class: 'card-img-top' %>
+            <%= image_tag post.post_images[0].variant(resize: '500x500').processed, class: 'card-img-top' %>
         <% end %>
         <div class="card-body">
               <p class="card-text">
