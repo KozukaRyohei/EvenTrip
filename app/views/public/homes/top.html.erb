@@ -4,8 +4,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2>イベント検索</h2>
-      <%= link_to new_event_path, class: "btn btn-primary text-light" do %>
-        新しくイベントを登録する
+      <!--ログインしていなければ登録できないようにする-->
+      <% if user_signed_in? %>
+        <%= link_to new_event_path, class: "btn btn-primary text-light" do %>
+          新しくイベントを登録する
+        <% end %>
       <% end %>
 
       <%= form_tag(events_path, method: :get, class: "mt-3") do %>
