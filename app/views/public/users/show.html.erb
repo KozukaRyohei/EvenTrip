@@ -5,7 +5,7 @@
         <div>ユーザー名: <%= @user.name %></div>
         <%= image_tag @user.get_user_image(100,100), class: 'img-thumbnail' %>
         <div>参加イベント数: <%= @unique_event_count %> 件</div>
-        <% if current_user.id == @user.id %>
+        <% if user_signed_in? && current_user.id == @user.id %>
           <div><%= link_to "ユーザー情報編集", edit_user_path(@user), class: 'btn btn-primary' %></div>
         <% end %>
       </div>
