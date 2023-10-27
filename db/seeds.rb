@@ -12,8 +12,3 @@ Admin.create!(
 )
 
 
-  Event.create!(
-    name: '平日深呼吸。桑原由気&高田憂希　バスツアー第二弾',
-    hold_date: '2023-10-22',
-    hold_place: '関東近郊'
- )
