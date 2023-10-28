@@ -15,13 +15,16 @@
 このサイトの開発に着手しようと考えました。
 ​
 ### ターゲットユーザ
-* 旅行、イベントなどを記録として残したい人
+* イベントや旅行などを記録として残したい人
 ​
 ### 主な利用シーン
 * 行った旅行、イベントを記録として残す時
 * 他の人が投稿した写真を閲覧する時
 ## 設計書
-<!--テーマを設定・提出する時点では不要です-->
+* [ER図](https://drive.google.com/file/d/132QOQAWSTk8Ls5oyLI-wG0fXWliz2PAT/view?usp=sharing)
+* [テーブル定義書](https://docs.google.com/spreadsheets/d/1Sa7MvCKEHt-ehr4JhQIP88f8QjiYvaxw/edit?usp=sharing&ouid=103583704317165744830&rtpof=true&sd=true)
+* [アプリケーション設計書](https://docs.google.com/spreadsheets/d/1fI0QkhNdqcjMl9EZHlw8wBjKZFyetS3lCOEcZ5flfm8/edit?usp=sharing)
+
 ​
 ## 開発環境
 - OS：Windows10
