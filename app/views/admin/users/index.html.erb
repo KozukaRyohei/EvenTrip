@@ -10,7 +10,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
+        <td><%= link_to user.name, admin_user_path(user), method: :get %></td>
         <td>
           <%= form_with model: user, url: admin_user_path(user.id) do |f| %>
             <%= f.select :is_deleted, options_for_select({ "退会" => true, "有効" => false }, f.object.is_deleted) %>
@@ -21,3 +21,27 @@
     <% end %>
   </tbody>
 </table>
+
+<!--下のコードに変更したい-->
+
+<!--<h1>会員一覧（管理者向け）</h1>-->
+
+<!--<table>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>ユーザーID</th>-->
+<!--      <th>ユーザー名</th>-->
+<!--      <th>退会ステータス</th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--    <%# @users.each do |user| %>-->
+<!--      <tr>-->
+<!--        <td><%#= user.id %></td>-->
+<!--        <td><%#= user.name %></td>-->
+<!--        <td><%#= user.is_deleted %></td>-->
+<!--        <td><%#= link_to '詳細', admin_user_path(user), method: :get %></td>-->
+<!--      </tr>-->
+<!--    <%# end %>-->
+<!--  </tbody>-->
+<!--</table>-->

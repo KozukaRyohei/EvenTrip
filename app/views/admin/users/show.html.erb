@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>User Information</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>ユーザー名</th>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @user.phone_number %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th>退会ステータス</th>
+            <td>
+              <%= form_with model: @user do |f| %>
+                <%= f.select :is_deleted, options_for_select({ "退会" => true, "有効" => false }, f.object.is_deleted) %>
+                <%= f.submit '更新' %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
