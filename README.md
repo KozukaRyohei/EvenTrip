@@ -21,7 +21,7 @@
 * 行った旅行、イベントを記録として残す時
 * 他の人が投稿した写真を閲覧する時
 ## 設計書
-* [ER図](https://drive.google.com/drive/folders/19rj-1vPsxPuaZ6Lld8wUUNDwk6r2jee4)
+* [ER図]([https://drive.google.com/drive/folders/19rj-1vPsxPuaZ6Lld8wUUNDwk6r2jee4](https://drive.google.com/file/d/132QOQAWSTk8Ls5oyLI-wG0fXWliz2PAT/view?usp=sharing))
 * [テーブル定義書](https://docs.google.com/spreadsheets/d/1Sa7MvCKEHt-ehr4JhQIP88f8QjiYvaxw/edit#gid=22058163)
 * [アプリケーション設計書](https://docs.google.com/spreadsheets/d/1fI0QkhNdqcjMl9EZHlw8wBjKZFyetS3lCOEcZ5flfm8/edit#gid=549108681)
 ​
