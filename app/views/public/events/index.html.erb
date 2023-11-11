@@ -1,5 +1,7 @@
 <% if @events.any? %>
   <h1>イベント一覧</h1>
+  <%= link_to '新しい順', events_path(sort: 'newest') %>
+  <%= link_to '古い順', events_path(sort: 'oldest') %>
   <ul class="list-group">
     <% @events.each do |event| %>
       <li class="list-group-item">
@@ -9,15 +11,6 @@
         </div>
         <div class="d-flex justify-content-between align-items-center">
           <h2>開催場所: <%= event.hold_place %></h2>
-          <!--イベントに紐づいた投稿の画像をランダム表示-->
-          <!--<div>-->
-            <%# if event.posts.any? %>
-              <%# random_post = event.posts.sample %>
-              <%# random_post.post_images.each do |image| %>
-                <%#= image_tag image.variant(resize: "150x150"), class: "img-thumbnail" %>
-              <%# end %>
-            <%# end %>
-          <!--</div>-->
         </div>
         <div>
           <%= image_tag event.get_event_image(200, 200).processed, class: "img-thumbnail" %>

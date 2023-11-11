@@ -1,7 +1,16 @@
 class Public::EventsController < ApplicationController
 
   def index
-    @events = Event.all #←降順で表示させたい
+    @events = Event.all
+    case params[:sort]
+      when 'newest'
+        @events = @events.order(hold_date: :desc)
+      when 'oldest'
+        @events = @events.order(hold_date: :asc)
+      else
+        # デフォルトは特にソートしない
+    end
+
     if params[:search].present?
       @events = @events.where('name LIKE ?', "%#{params[:search]}%")
     end
