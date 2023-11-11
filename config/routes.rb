@@ -18,7 +18,7 @@ Rails.application.routes.draw do
      root to:'homes#top' #トップページ
      post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
       #イベントの一覧、詳細、登録(画面、処理)、編集
-    resources :events, only: [:index, :show, :new, :create, :edit,:update] do
+    resources :events do
       #投稿の一覧、投稿(画面、処理)、詳細、投稿の削除
       resources :posts, only: [:index, :new, :create, :show, :destroy] do
         resources :hashtags, only: [:show],param: :name

@@ -20,10 +20,6 @@ class Public::EventsController < ApplicationController
     @event = Event.find(params[:id])
     @posts = Post.where(event_id: @event.id)
     @last_changer = User.find(@event.last_editor_id)
-  # if @last_editor.nil?
-
-  # end
-
   end
 
   def new
@@ -33,6 +29,7 @@ class Public::EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.last_editor_id = current_user.id
+    @event.created_by = current_user.id
     if @event.save
       flash[notice] = "イベントを登録しました。"
        redirect_to event_path(id: @event.id)
@@ -54,6 +51,12 @@ class Public::EventsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to events_path
   end
 
   private

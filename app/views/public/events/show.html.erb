@@ -3,7 +3,13 @@
 
   <!-- イベント編集ボタン -->
   <div class="text-right">
-    <%= link_to 'イベントを編集', edit_event_path(@event), class: "btn btn-primary" %>
+    <% if user_signed_in? %>
+      <%= link_to 'イベントを編集', edit_event_path(@event), class: "btn btn-primary" %>
+    <% end %>
+
+    <% if @event&.created_by == current_user&.id %>
+      <%= link_to 'イベントを削除', event_path(@event), class: "btn btn-danger" %>
+    <% end %>
   </div>
 
   <div class="row">
