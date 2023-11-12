@@ -6,12 +6,18 @@
     <% @events.each do |event| %>
       <li class="list-group-item">
         <div class="d-flex justify-content-between align-items-center">
-          <h2><strong><%= link_to event.name, event_path(event) %></strong></h2> <!-- イベント名を大きく太字に -->
+          <h2><strong><%= link_to event.name, event_path(event) %></strong></h2>
           <span class="badge badge-primary"><%= event.hold_date %></span>
         </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>参加者数: <%= event.posts.distinct.count(:user_id) %></h2>
+        </div>
+
         <div class="d-flex justify-content-between align-items-center">
           <h2>開催場所: <%= event.hold_place %></h2>
         </div>
+
         <div>
           <%= image_tag event.get_event_image(200, 200).processed, class: "img-thumbnail" %>
         </div>

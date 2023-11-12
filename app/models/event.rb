@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   has_one_attached :event_image
 
   has_many :posts
+  has_many :participants
 
   validates :name, presence: true
   validates :hold_date, presence: true
