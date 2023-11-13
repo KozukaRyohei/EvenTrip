@@ -1,7 +1,8 @@
 class Public::EventsController < ApplicationController
 
   def index
-     @events = Event.all
+    # @events = Event.all
+    @events = Event.page(params[:page])
     case params[:sort]
       when 'newest'
         @events = @events.order(hold_date: :desc)
