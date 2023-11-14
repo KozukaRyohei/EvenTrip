@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-
+  before_action :matching_login_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -9,10 +9,12 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
+    matching_login_user
     @user = current_user
   end
 
   def update
+    matching_login_user
     @user = current_user
     if @user.update(user_params)
       # 更新成功時の処理
@@ -27,6 +29,13 @@ class Public::UsersController < ApplicationController
   end
 
   private
+
+  def matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to request.referer
+    end
+  end
 
   def user_params
     params.require(:user).permit(:name, :user_image)
