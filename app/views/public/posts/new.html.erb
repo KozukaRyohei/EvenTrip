@@ -2,6 +2,7 @@
 
 <div class="container">
   <h1>投稿ページ</h1>
+  <p>このページでは、投稿文にハッシュタグを追加したり、複数の画像を投稿することができます。</p>
   <%= form_with(model: Post.new, url: event_posts_path, method: :post, local: true) do |f| %>
     <div class="form-group">
       <h2>投稿文</h2>
@@ -13,6 +14,6 @@
       <%= f.file_field :post_images, multiple: true, class: 'form-control-file' %>
     </div>
 
-    <%= f.submit "登録する", class: 'btn btn-primary' %>
+    <%= f.submit "投稿", class: 'btn btn-primary' %>
   <% end %>
 </div>

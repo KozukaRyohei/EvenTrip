@@ -12,6 +12,14 @@ class Public::EventsController < ApplicationController
         # デフォルトは特にソートしない
     end
 
+    @random_images = {}
+    @events.each do |event|
+      event.posts.each do |post|
+        images = post.post_images.sample(2) # 各投稿から2枚の画像をランダムに選択する例
+        @random_images[post.id] = images
+      end
+    end
+
     if params[:search].present?
       @events = @events.where('name LIKE ?', "%#{params[:search]}%")
     end
