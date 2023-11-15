@@ -8,7 +8,7 @@ class Public::HomesController < ApplicationController
   end
 
   def guest_sign_in
-    user = User.find_or_create_by!(name: 'ゲストユーザー',email: 'guest@example.com',phone_number:'00000000000') do |user|
+    user = User.find_or_create_by!(user_id: 1, name: 'ゲストユーザー',email: 'guest@example.com',phone_number: '00000000000') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.user_image.attach(io: File.open('app/assets/images/guest_image.jpg'), filename: 'guest_image.jpg', content_type: 'image/jpg')
     end

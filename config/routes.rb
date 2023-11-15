@@ -27,10 +27,13 @@ Rails.application.routes.draw do
         resources :comments, only: [:create, :destroy]
       end
     end
-      #新規登録(画面、処理)、マイページ、登録情報編集(画面、処理)、ユーザーの退会処理
+      #マイページ、登録情報編集(画面、処理)、ユーザーの退会処理
     resources :users, only: [:show, :edit, :update,:destroy] do
       member do
         get :favorited_posts
+      end
+      member do
+        get :withdrawal
       end
     end
   end

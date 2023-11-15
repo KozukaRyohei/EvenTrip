@@ -24,6 +24,11 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def withdrawal
+    current_user.update(is_deleted: true)
+    redirect_to new_user_registration_path
+  end
+
   def favorited_posts
     @favorited_posts = Post.favorited_posts(current_user)
   end
