@@ -24,7 +24,7 @@
           <% event_posts_images = event.posts.flat_map { |post| post.post_images } %>
           <% random_images = event_posts_images.sample(4) %>
             <% random_images.each do |image| %>
-              <%= image_tag(image.variant(resize: '300x300').processed, class: "img-thumbnail mr-2") %>
+              <%= image_tag(image.variant(resize_to_limit: [300, 300]).processed, class: "img-thumbnail mr-2") %>
             <% end %>
         </div>
       </li>
