@@ -11,9 +11,3 @@ Admin.create!(
    password: '123456'
 )
 
-Event.create!(
-   name: 'テストイベント',
-   hold_date: '2023-10-28',
-   hold_place: 'test_place'
-)
-
