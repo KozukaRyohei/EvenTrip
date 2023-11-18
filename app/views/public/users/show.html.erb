@@ -1,18 +1,15 @@
 <div class="container">
   <div class="row mt-4">
-    <div class="col-md-6">
-      <div class="user-info">
-        <div>ユーザー名: <%= @user.name %></div>
-        <%= image_tag @user.get_user_image(100,100), class: 'img-thumbnail' %>
-        <div>参加イベント数: <%= @unique_event_count %> 件</div>
-        <% if user_signed_in? && current_user.id == @user.id && @user.guest != true %>
-          <div><%= link_to "ユーザー情報編集", edit_user_path(@user), class: 'btn btn-primary' %></div>
-        <% end %>
-      </div>
+    <div class="col-md-6 user-info">
+      <%= image_tag @user.get_user_image(100,100), class: 'img-thumbnail' %>
+      <div>ユーザー名: <%= @user.name %></div>
+      <div>参加イベント数: <%= @unique_event_count %> 件</div>
+      <% if user_signed_in? && current_user.id == @user.id && @user.guest != true %> <!--ユーザーがログインしている & ゲストユーザーではない場合表示-->
+        <div><%= link_to "ユーザー情報編集", edit_user_path(@user), class: 'btn btn-primary' %></div>
+      <% end %>
     </div>
-    <div class="col-md-6">
-      <div class="user-posts">
-        <h3>投稿一覧</h3>
+    <div class="col-md-6 user-posts">
+      <h3>投稿一覧</h3>
         <div class="row">
           <% @posts.each do |post| %>
             <div class="col-md-3">
@@ -21,14 +18,16 @@
                 <%= link_to event_post_path(event_id: post.event_id, id: post.id) do %>
                   <%= image_tag first_image.variant(resize: '100x100').processed, class: 'img-thumbnail' %>
                 <% end %>
-                <div>
-                  <strong><%= link_to post.event.name, event_path(post.event_id) %></strong>
-                </div>
-                <div><%= post.event.hold_date %></div>
+              </div>
+              <div>
+                <strong><%= link_to post.event.name, event_path(post.event_id) %></strong>
+              </div>
+              <div><%= post.event.hold_date %></div>
+              <div class="">
+                <%= link_to "削除",event_post_path(event_id: post.event_id, id: post.id),method: :delete ,data: { confirm: '投稿を削除しますか？' }, class: "btn btn-danger"%>
               </div>
             </div>
           <% end %>
-        </div>
       </div>
     </div>
   </div>
