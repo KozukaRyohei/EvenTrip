@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   belongs_to :event
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
-  has_many :hash_post_relations
+  has_many :hash_post_relations, dependent: :destroy
   has_many :hashtags, through: :hash_post_relations
 
   validates :text, presence: true
