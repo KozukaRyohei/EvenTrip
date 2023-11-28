@@ -11,9 +11,9 @@
       </td>
       <td><%= post_comment.comment %></td>
       <td>
-        <% if post_comment.user == current_user %>
+        <% if post_comment.user == current_user or admin_signed_in? %>
           <td>
-            <%= link_to "削除", event_post_post_comment_path(post.event_id, post.id, post_comment), method: :delete, class: "btn btn-sm btn-danger" %>
+            <%= link_to "削除", event_post_post_comment_path(post.event_id, post.id, post_comment), data: { confirm: 'コメントを削除しますか？' }, method: :delete, class: "btn btn-sm btn-danger" %>
           </td>
         <% end %>
       </td>

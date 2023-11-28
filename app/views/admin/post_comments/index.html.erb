@@ -14,6 +14,7 @@
       <tr>
         <th>ユーザーID</th>
         <th>ユーザー名</th>
+        <th>イベント名</th>
         <th>コメント</th>
       </tr>
     </thead>
@@ -22,9 +23,10 @@
           <tr>
             <td><%= comment.user_id %></td>
             <td><%= comment.user.name %></td>
+            <td><%= link_to comment.post.event.name, event_path(comment.post.event) %></td>
             <td><%= comment.comment %></td>
             <td>
-              <%= link_to "Destroy", admin_post_comment_path(comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
+              <%= link_to "Destroy", admin_post_comment_path(comment.id), method: :delete,data: { confirm: 'コメントを削除しますか？' }, class: "btn btn-sm btn-danger" %>
             </td>
           </tr>
       <% end %>

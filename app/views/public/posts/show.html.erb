@@ -20,10 +20,10 @@
   <div class="mb-3">
     <p>コメント数：<%= @post.post_comments.count %></p>
   </div>
-  <% if user_signed_in? %>
+  <%# if user_signed_in? %>
     <%= render "public/post_comments/index", post: @post %>
     <%= render "public/post_comments/form", post: @post, comment: @comment %>
-  <% end %>
+  <%# end %>
 
   <div class="mb-3">
     <p><!---->
