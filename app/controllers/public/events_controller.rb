@@ -1,6 +1,5 @@
 class Public::EventsController < ApplicationController
   before_action :authenticate_user!,only: [:new, :create,:edit,:update]
-  before_action :matching_login_user,only: [:new, :create,:edit,:update]
 
   def index
     # @events = Event.all
@@ -69,14 +68,6 @@ class Public::EventsController < ApplicationController
     @event.destroy
     redirect_to events_path
   end
-
-  def matching_login_user
-    user = User.find(params[:id])
-    unless user.id == current_user.id
-      render template: 'public/users/show'
-    end
-  end
-
 
   private
 
