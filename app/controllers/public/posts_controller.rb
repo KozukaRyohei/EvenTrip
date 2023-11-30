@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
-
+before_action :authenticate_user!,only: [:new, :create,:edit,:destroy]
+before_action :matching_login_user,only: [:new, :create,:edit,:destroy]
   def new
     @post = Post.new
   end
@@ -32,6 +33,13 @@ class Public::PostsController < ApplicationController
   def resize_image(width,height)
     post_params[:post_images].each do |image|
       image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(width, height).call
+    end
+  end
+
+  def matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to request.referer
     end
   end
 

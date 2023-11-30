@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
-  before_action :matching_login_user, only: [:edit, :update]
+  before_action :authenticate_user!,only: [:edit, :update,:withdrawal,:favorited_posts]
+  before_action :matching_login_user, only: [:edit, :update,:withdrawal,:favorited_posts]
 
   def show
     @user = User.find(params[:id])
@@ -24,6 +25,7 @@ class Public::UsersController < ApplicationController
     end
   end
 
+
   def withdrawal
     current_user.update(is_deleted: true)
     redirect_to new_user_registration_path
@@ -38,7 +40,11 @@ class Public::UsersController < ApplicationController
   def matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to request.referer
+      #users/showの表示に必要な値を格納
+      @user = current_user
+      @posts = @user.posts
+      @unique_event_count = @posts.joins(:event).select('DISTINCT events.id').count
+      render template: 'public/users/show'
     end
   end
 

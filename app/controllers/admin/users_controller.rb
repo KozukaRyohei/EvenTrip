@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-
+before_action :authenticate_admin!,only: [:index,:update]
 
     def index
       @users = User.all

@@ -1,5 +1,5 @@
 class Admin::PostCommentsController < ApplicationController
-
+before_action :authenticate_user!,only: [:destroy]
   def index
     @search_word = params[:search]
     if @search_word
