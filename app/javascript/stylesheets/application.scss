@@ -1,7 +1,10 @@
 @use '~bootstrap/scss/bootstrap';
 
 body {
-  background-image: url('../../assets/images/event.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+  url('../../assets/images/event.jpg');
+  color: #ffffff; /* テキストの色（白色） */
+  font-family: Arial, sans-serif; /* サンセリフフォントの指定 */
 
 /* 画像を常に天地左右の中央に配置 */
   background-position: center center;
