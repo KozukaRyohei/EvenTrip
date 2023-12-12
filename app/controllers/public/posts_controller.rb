@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
 before_action :authenticate_user!,only: [:new, :create,:edit,:destroy]
-before_action :matching_login_user,only: [:new, :create,:edit,:destroy]
+# before_action :matching_login_user,only: [:new, :create,:edit,:destroy]
   def new
     @post = Post.new
   end
@@ -36,12 +36,12 @@ before_action :matching_login_user,only: [:new, :create,:edit,:destroy]
     end
   end
 
-  def matching_login_user
-    user = User.find(params[:id])
-    unless user.id == current_user.id
-      redirect_to request.referer
-    end
-  end
+  # def matching_login_user
+  #   user = current_user.id
+  #   unless user.id == current_user.id
+  #     redirect_to request.referer
+  #   end
+  # end
 
   private
 
