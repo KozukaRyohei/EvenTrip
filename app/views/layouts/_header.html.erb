@@ -7,23 +7,29 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-
-        <% if user_signed_in? %>
-           <li><%= link_to 'イベント一覧', events_path,class: 'nav-link text-light'  %> </li>
-           <li><%= link_to 'マイページ', user_path(current_user),class: 'nav-link text-light' %> </li>
-           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'nav-link text-light' %> </li>
-           <li><%= link_to 'いいねした投稿', favorited_posts_user_path(current_user),class: 'nav-link text-light'%></li>
-        <% elsif admin_signed_in? %>
-           <li><%= link_to 'ユーザー一覧', admin_users_path,class: 'nav-link text-light' %></li>
-           <li><%= link_to 'コメント一覧', admin_post_comments_path,class: 'nav-link text-light' %></li>
-           <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: 'nav-link text-light' %></li>
-        <% else %>
-           <li><%= link_to 'イベント一覧', events_path,class: 'nav-link text-light' %></li>
-           <li><%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, class: 'nav-link text-light', method: :post %></li>
-           <li><%= link_to '新規登録', new_user_registration_path,class: 'nav-link text-light'%></li>
-           <li><%= link_to 'ログイン', new_user_session_path,class: 'nav-link text-light'%></li>
-        <% end %>
+          <% if user_signed_in? %>
+             <li><%= link_to 'イベント一覧', events_path,class: 'nav-link text-light'  %> </li>
+             <li><%= link_to 'マイページ', user_path(current_user),class: 'nav-link text-light' %> </li>
+             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'nav-link text-light' %> </li>
+             <li><%= link_to 'いいねした投稿', favorited_posts_user_path(current_user),class: 'nav-link text-light'%></li>
+          <% elsif admin_signed_in? %>
+             <li><%= link_to 'ユーザー一覧', admin_users_path,class: 'nav-link text-light' %></li>
+             <li><%= link_to 'コメント一覧', admin_post_comments_path,class: 'nav-link text-light' %></li>
+             <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: 'nav-link text-light' %></li>
+          <% else %>
+             <li><%= link_to 'イベント一覧', events_path,class: 'nav-link text-light' %></li>
+             <li><%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, class: 'nav-link text-light', method: :post %></li>
+             <li><%= link_to '新規登録', new_user_registration_path,class: 'nav-link text-light'%></li>
+             <li><%= link_to 'ログイン', new_user_session_path,class: 'nav-link text-light'%></li>
+          <% end %>
         </ul>
+
+        <div class = "header_username">
+          <%= image_tag current_user.user_image.variant(resize_to_limit: [40, 40]) %>
+          <%= link_to current_user.name, user_path(current_user.id)%>
+        </div>
+
+
       </div>
     </div>
   </nav>

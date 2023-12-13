@@ -21,6 +21,11 @@ body {
   /* 背景画像が読み込まれる前に表示される背景のカラー */
   background-color: #464646;
 }
+
 th,td {
   color: #ffffff; /* テキストの色（白色） */
+}
+
+.header_username {
+  padding-left: 50px;
 }
